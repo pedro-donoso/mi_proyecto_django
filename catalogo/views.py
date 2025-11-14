@@ -5,3 +5,6 @@ from .models import Libro
 def lista_libros(request):
     libros = Libro.objects.all()
     return render(request, 'catalogo/lista_libros.html', {'libros': libros})
+
+def inicio(request):
+    return render(request, 'catalogo/inicio.html')
