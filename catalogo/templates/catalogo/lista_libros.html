@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Libros</title>
+</head>
+<body>
+    <h1>Listado de Libros</h1>
+    <ul>
+        {% for libro in libros %}
+            <li>{{ libro.titulo }} - {{ libro.autor }}</li>
+        {% empty %}
+            <li>No hay libros registrados</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Agregar nuevo libro</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    {% if form.erros %}
+        <div style="color: red;">
+            <p> Por favor corrige los errores indicados.</p>
+            {{ form.errors }}
+        </div>
+    {% endif %}
+    <p><a href="/">Volver al inicio</a></p>
+</body>
+</html>
